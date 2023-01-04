@@ -45,26 +45,28 @@ app.post("/",(req,res)=>{
 
 
 app.get("/:id",(req,res)=>{
+  
 const um=req.params.id;
-console.log(um);
+
 
     url.findOne({shortenedUrl:um},(error,Url)=>{
+console.log(Url);
 
-const originalLink=Url.currentUrl;
-console.log(originalLink);
+console.log(Url.currentUrl);
+
         if(error)
         {
-           console.log(error);
+           console.log("hni ");
         }
         else
         {
         //  console.log(typeof(originalLink));
-            res.redirect(originalLink);  
+            res.redirect(Url.currentUrl);  
         }      
     });
    
 });
-app.listen(process.env.PORT,()=>{
+app.listen(4000,()=>{
 
 
     console.log("listening ");
